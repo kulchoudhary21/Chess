@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Kuldeep Choudhary" />
+    <link rel="stylesheet" href="Chess.css" />
+    <title>Chess</title>
+  </head>
+  <style>
+    body {
+      background-image: url("img2.jfif");
+      background-repeat: round;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    .main-container {
+      width: 100%;
+      height: auto;
+      border: 5px;
+      border-style: solid;
+      border-radius: 20px;
+      border-color: skyblue;
+      border-width: 100%;
+    }
+    .con-1 {
+      border: 5px;
+      width: max-content;
+      border-style: solid;
+      border-radius: 20px;
+      border-color: skyblue;
+      margin: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 60px;
+      padding-right: 60px;
+      padding-bottom: 60px;
+      background-color: lightgrey;
+    }
+    .con-2 {
+      border: 5px;
+      box-sizing: content-box;
+      border-style: solid;
+      border-radius: 20px;
+      border-color: skyblue;
+      border-width: 100%;
+      margin: 20px;
+      margin-left: 40px;
+      margin-right: 40px;
+      padding-right: 20px;
+      padding: 30px;
+      padding-top: 30px;
+      background-color: lightgrey;
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: inherit;
+      border: 2px;
+      border-style: solid;
+      border-radius: 10px;
+      border-color: black;
+      border-width: 100%;
+      margin: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: lightgrey;
+      padding: 8px;
+    }
+    .c1 {
+      padding: 50px;
+      justify-content: center;
+      display: flex;
+      text-align: center;
+      border: 2px;
+      box-sizing: content-box;
+      border-style: solid;
+      border-color: black;
+      width: 40px;
+      height: 40px;
+      font-size: xx-large;
+    }
+    .row-1 {
+      width: 20px;
+      height: auto;
+    }
+    button {
+      border: 2px;
+      box-sizing: content-box;
+      border-style: solid;
+      border-color: blue;
+      border-radius: 20px;
+      border-width: 100%;
+      text-align: center;
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+      display: flex;
+      padding: 5px;
+      margin-top: 10px;
+    }
+    #msg {
+      padding: 10px;
+      font-size: x-large;
+      color: darkgreen;
+      justify-content: center;
+      display: flex;
+    }
+    #p1 {
+      padding: 10px;
+      font-size: large;
+      color: orangered;
+    }
+    #p2 {
+      padding: 10px;
+      font-size: large;
+      color: darkblue;
+    }
+    #win-msg {
+      padding-top: 10px;
+      font-size: x-large;
+      color: green;
+      justify-content: center;
+      display: flex;
+    }
+    .heading {
+      text-align: center;
+      color: deeppink;
+      font-size: 3rem;
+      font-family: cursive;
+    }
+  </style>
+  <body>
+    <div class="col">
+      <h1 class="heading">Chess</h1>
+
+      <div class="con-2">
+        <form class="row">
+          <div>
+            <label>Player 1</label>
+            <input
+              type="text"
+              id="player1"
+              placeholder="Player name for white"
+              required
+            />
+          </div>
+          <div>
+            <label>Player 2</label>
+            <input
+              type="text"
+              id="player2"
+              required
+              placeholder="Player name for black"
+            />
+          </div>
+          <div>
+            <button type="button" onclick="insertImage()" id="checkButton1">
+              Play
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <h2 id="tog" style="color: brown; background-color: antiquewhite"></h2>
+    <ul>
+      <div class="divv" id="row8">
+        <li class="box" id="b801">Brook</li>
+        <li class="box" id="b802">Bknight</li>
+        <li class="box" id="b803">Bking</li>
+        <li class="box" id="b804">Bbishop</li>
+        <li class="box" id="b805">Bknight</li>
+        <li class="box" id="b806">Brook</li>
+        <li class="box" id="b807">Bbishop</li>
+        <li class="box" id="b808">Bqueen</li>
+      </div>
+      <div class="divv" id="row7">
+        <li class="box" id="b701">Bpawn</li>
+        <li class="box" id="b702">Bpawn</li>
+        <li class="box" id="b703">Bpawn</li>
+        <li class="box" id="b704">Bpawn</li>
+        <li class="box" id="b705">Bpawn</li>
+        <li class="box" id="b706">Bpawn</li>
+        <li class="box" id="b707">Bpawn</li>
+        <li class="box" id="b708">Bpawn</li>
+      </div>
+      <div class="divv" id="row6">
+        <li class="box" id="b601"></li>
+        <li class="box" id="b602"></li>
+        <li class="box" id="b603"></li>
+        <li class="box" id="b604"></li>
+        <li class="box" id="b605"></li>
+        <li class="box" id="b606"></li>
+        <li class="box" id="b607"></li>
+        <li class="box" id="b608"></li>
+      </div>
+      <div class="divv" id="row5">
+        <li class="box" id="b501"></li>
+        <li class="box" id="b502"></li>
+        <li class="box" id="b503"></li>
+        <li class="box" id="b504"></li>
+        <li class="box" id="b505"></li>
+        <li class="box" id="b506"></li>
+        <li class="box" id="b507"></li>
+        <li class="box" id="b508"></li>
+      </div>
+      <div class="divv" id="row4">
+        <li class="box" id="b401"></li>
+        <li class="box" id="b402"></li>
+        <li class="box" id="b403"></li>
+        <li class="box" id="b404"></li>
+        <li class="box" id="b405"></li>
+        <li class="box" id="b406"></li>
+        <li class="box" id="b407"></li>
+        <li class="box" id="b408"></li>
+      </div>
+      <div class="divv" id="row3">
+        <li class="box" id="b301"></li>
+        <li class="box" id="b302"></li>
+        <li class="box" id="b303"></li>
+        <li class="box" id="b304"></li>
+        <li class="box" id="b305"></li>
+        <li class="box" id="b306"></li>
+        <li class="box" id="b307"></li>
+        <li class="box" id="b308"></li>
+      </div>
+      <div class="divv" id="row2">
+        <li class="box Wpawn" id="b201">Wpawn</li>
+        <li class="box Wpawn" id="b202">Wpawn</li>
+        <li class="box Wpawn" id="b203">Wpawn</li>
+        <li class="box Wpawn" id="b204">Wpawn</li>
+        <li class="box Wpawn" id="b205">Wpawn</li>
+        <li class="box Wpawn" id="b206">Wpawn</li>
+        <li class="box Wpawn" id="b207">Wpawn</li>
+        <li class="box Wpawn" id="b208">Wpawn</li>
+      </div>
+      <div class="divv" id="row1">
+        <li class="box" id="b101">Wrook</li>
+        <li class="box" id="b102">Wknight</li>
+        <li class="box" id="b103">Wking</li>
+        <li class="box" id="b104">Wbishop</li>
+        <li class="box" id="b105">Wknight</li>
+        <li class="box" id="b106">Wrook</li>
+        <li class="box" id="b107">Wbishop</li>
+        <li class="box" id="b108">Wqueen</li>
+      </div>
+    </ul>
+    <br />
+    <script src="Chess.js"></script>
+  </body>
+  <script></script>
+</html>
